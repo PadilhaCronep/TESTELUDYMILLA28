@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludymilla Dias | Pela Missão</title>
+    <link rel="shortcut icon" href="img/favicon_icone.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #facc15;
+            --dark: #050505;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Grain Overlay Effect */
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Scroll Reveal System */
+        .reveal-node {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+
+        .reveal-node.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Form State */
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        /* Background Animated Blobs */
+        .bg-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.08) 0%, rgba(250, 204, 21, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+            animation: float-blob 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes float-blob {
+            0% {
+                transform: translate(-10%, -10%) scale(1);
+            }
+
+            50% {
+                transform: translate(10%, 5%) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-5%, 15%) scale(0.9);
+            }
+        }
+
+        .social-icon i {
+            color: white;
+            transition: color 0.3s ease, transform 0.3s ease;
+            margin: 5px;
+        }
+
+        .social-icon:hover i {
+            color: #d4af37;
+            /* dourado */
+            transform: scale(1.15);
+        }
+
+
+        /* Animação de check ao enviar */
+        .submit-success {
+            position: relative;
+            display: inline-block;
+            animation: fadeInOut 2s ease forwards;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #065f46;
+            /* verde */
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            20% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+
+            80% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        .text-zinc-600:hover {
+            color: #676978;
+        }
+        @media (max-width: 768px) {
+  .bg-blob {
+    animation: none !important;
+    filter: blur(40px);
+  }
+}
+    </style>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/assets/app.css">
+</head>
+
+<body class="selection:bg-yellow-400 selection:text-zinc-950">
+    <div class="grain-overlay"></div>
+
+    <!-- Header -->
+    <header id="main-header"
+        class="fixed top-0 left-0 w-full z-[100] px-6 py-5 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+                <div class="h-12 w-auto overflow-hidden">
+                   <img
+  src="https://drive.google.com/thumbnail?id=17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg&sz=w400"
+  alt="Logo oficial Ludymilla Dias Pela Missão"
+  class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+  referrerpolicy="no-referrer"
+  crossorigin="anonymous"
+  onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w400';"
+  />
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-black text-[10px] tracking-[0.15em] uppercase leading-none">Ludymilla
+                        Dias</span>
+                    <span class="text-yellow-400 font-bold text-[8px] uppercase tracking-[0.2em] mt-1">Pela
+                        Missão</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about"
+                    class="text-white/70 hover:text-yellow-400 text-[10px] font-black uppercase tracking-widest transition-colors">Sobre</a>
+                <a href="#trajetoria"
+                    class="text-white/70 hover:text-yellow-400 text-[10px] font-black uppercase tracking-widest transition-colors">Atuação</a>
+                <a href="#defense"
+                    class="text-white/70 hover:text-yellow-400 text-[10px] font-black uppercase tracking-widest transition-colors">Propostas</a>
+                <a href="#join"
+                    class="bg-yellow-400 text-zinc-950 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all">Apoiar</a>
+            </nav>
+            <button class="text-white p-2 md:hidden" aria-label="Menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero (Dobra 1) -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 px-6 overflow-hidden">
+        <div class="bg-blob top-[10%] left-[5%] opacity-40"></div>
+        <div class="bg-blob bottom-[10%] right-[5%] opacity-30" style="animation-delay: -5s;"></div>
+        <div class="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10">
+            <div
+               <div
+                    class="reveal-node inline-flex items-center gap-2 bg-[#DB15BB]/10 border border-[#DB15BB]/20 px-4 py-2 rounded-full mb-12"
+                >
+                  <span class="w-2 h-2 bg-[#DB15BB] rounded-full animate-pulse"></span>
+                  <span class="text-[#DB15BB] font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase">
+                    Pré-candidata a Deputada Federal
+                </span>
+            </div>
+            <h1 class="reveal-node flex flex-col text-6xl md:text-[100px] font-black leading-[0.9] tracking-tighter mb-8"
+                style="transition-delay: 100ms;">
+                <span class="text-white">Ludymilla</span>
+                <span class="text-yellow-400">Dias</span>
+            </h1>
+            <p class="reveal-node text-lg md:text-2xl text-zinc-100 font-medium max-w-2xl mb-4"
+                style="transition-delay: 200ms;">Liberdade, responsabilidade e uma nova geração política.</p>
+            <p class="reveal-node text-xs md:text-sm text-zinc-500 font-bold tracking-tight mb-8 opacity-80"
+                style="transition-delay: 300ms;">Porta-voz oficial do MBL • Fundadora de honra do Partido Missão</p>
+            <div <div class="reveal-node flex items-center gap-2 text-[#DB15BB] mb-12" style="transition-delay: 400ms;">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                        clip-rule="evenodd" />
+                </svg>
+                <span class="font-bold text-sm tracking-tight">Guarulhos, São Paulo</span>
+            </div>
+            <div class="reveal-node flex flex-col w-full gap-4 max-w-sm" style="transition-delay: 500ms;">
+          <a href="#defense"
+             class="w-full relative overflow-hidden rounded-2xl px-6 py-5
+                    text-lg font-black text-white text-center whitespace-nowrap
+                    bg-[#700EBB]
+                    shadow-[0_14px_40px_-16px_rgba(112,14,187,0.95)]
+                    ring-1 ring-white/10
+                    transition-all duration-300 ease-out
+                    hover:bg-[#700EBB]/90 hover:shadow-[0_18px_55px_-18px_rgba(112,14,187,1)]
+                    active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#700EBB]/60">
+            Conheça Minhas Propostas
+          </a>
+        
+          <a href="#join"
+             class="w-full relative overflow-hidden rounded-2xl px-6 py-5
+                    text-lg font-black text-zinc-950 text-center whitespace-nowrap
+                    bg-yellow-400
+                    shadow-[0_14px_34px_-16px_rgba(0,0,0,0.8)]
+                    ring-1 ring-yellow-300/50
+                    transition-all duration-300 ease-out
+                    hover:bg-yellow-300 hover:shadow-[0_18px_46px_-18px_rgba(0,0,0,0.85)]
+                    active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-yellow-400/60">
+            Faça Parte da Missão
+          </a>
+        
+        </div>
+        </div>
+    </section>
+
+    <!-- SOBRE: Trajetória de Coragem (Dobra 2 - Após Hero) -->
+    <section id="about" class="py-32 bg-white relative overflow-hidden scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col items-center">
+                <!-- Bloco de Imagem com Fundo Amarelo -->
+                <div class="w-full max-w-[700px] relative reveal-node mb-16">
+                    <div class="aspect-[4/5] bg-yellow-400 rounded-[3.5rem] overflow-hidden relative shadow-2xl">
+                        <img src="https://lh3.googleusercontent.com/d/1VMrXH9LqpXJXw3xfFhMh8GTGHou2dgt-"
+                            alt="Ludymilla Dias" class="absolute inset-0 w-full h-full object-cover object-top">
+                        <!-- Badge Flutuante "Pré-Candidata Missão" -->
+                        <div class="absolute bottom-10 right-10 bg-black text-white px-8 py-5 rounded-3xl flex items-center gap-4 shadow-2xl border border-white/10">
+                        <img src="https://lh3.googleusercontent.com/d/1sujReY-tbimNvA0ovrNvYlAxFHPhPNvR"
+                                class="w-10 h-10 object-contain" alt="Missão Logo">
+                            <div class="flex flex-col">
+                                <span
+                                    class="text-[10px] font-black uppercase tracking-widest text-zinc-500">Pré-candidata</span>
+                                <span class="text-xl font-black italic uppercase leading-tight">Missão</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conteúdo de Texto -->
+                <div class="w-full max-w-4xl reveal-node">
+                    <!-- Linha Decorativa e Subtítulo -->
+                   <div class="flex items-center gap-4 mb-10">
+  <span class="w-3 h-3 bg-[#DB15BB] rounded-full"></span>
+  <span class="text-[#DB15BB] font-black text-xs uppercase tracking-[0.4em]">
+    Trajetória de Coragem
+  </span>
+  <span class="h-[1px] flex-1 bg-gradient-to-r from-[#DB15BB]/70 via-[#DB15BB]/30 to-transparent"></span>
+</div>
+
+
+                    <h2 class="text-5xl md:text-[84px] font-[900] text-zinc-950 leading-[0.85] tracking-tighter mb-12">
+                        Uma nova voz para <br>
+<span class="text-[#700EBB] italic">São Paulo no Congresso</span>
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="space-y-6 text-zinc-600 text-lg md:text-xl leading-relaxed font-medium">
+                            <p>
+                                Sou <strong class="text-zinc-950">Ludymilla Dias de Oliveira</strong>, pré-candidata a
+                                deputada federal pelo Estado de São Paulo. Nasci e cresci na cidade de <strong
+                                    class="text-zinc-950">Arujá</strong>, na região metropolitana de São Paulo, em uma
+                                família que pode me dar estrutura, passar valores e princípios para ser a mulher de
+                                hoje!
+                            </p>
+                        </div>
+                        <div class="space-y-6 text-zinc-600 text-lg md:text-xl leading-relaxed font-medium">
+                            <p>
+                                Atuo no <span class="text-zinc-950 font-bold border-b-2 border-yellow-400/30">MBL</span>
+                                há 3 anos e sou Fundadora de Honra do <span
+                                    class="text-zinc-950 font-bold border-b-2 border-yellow-400/30">Partido
+                                    Missão</span>. Acredito que a política precisa passar por uma reestruturação, e
+                                estou pronta para contribuir com esta mudança.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 flex flex-col md:flex-row items-center gap-6">
+                        <a href="#defense"
+                            class="bg-zinc-950 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-yellow-400 hover:text-zinc-950 transition-all shadow-xl flex items-center gap-4 group">
+                            Ver propostas
+                            <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trajetória (Atuação e Valores) (Abaixo da Trajetória de Coragem) -->
+    <section id="trajetoria" class="py-32 bg-[#050505] text-white relative overflow-hidden scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal-node">
+                <span class="text-yellow-400 font-black uppercase tracking-[0.4em] text-xs">Atuação</span>
+                <h2 class="text-4xl md:text-6xl font-black mt-8 mb-6 tracking-tighter">Valores e <span
+                        class="text-yellow-400">Atuação</span></h2>
+                <p class="text-zinc-500 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed">Presença ativa
+                    na política brasileira, com voz e ação em defesa da liberdade</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+                <div
+                class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">
+                <div
+                        class="w-16 h-16 bg-[#2a261a] rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">Porta-voz do MBL</h3>
+                    <p class="text-zinc-500 font-medium">Voz ativa no maior movimento liberal do Brasil</p>
+                </div>
+                <div
+                        class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">                    
+                <div
+                        class="w-16 h-16 bg-[#2a261a] rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">Presença no Congresso</h3>
+                    <p class="text-zinc-500 font-medium">Atuação direta em Brasília e nas Câmaras Municipais</p>
+                </div>
+                <div
+                    class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">
+                    <div
+                        class="w-16 h-16 bg-[#2a261a] rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-black mb-4">Mobilização Popular</h3>
+                    <p class="text-zinc-500 font-medium">Milhares de jovens engajados na luta pela liberdade</p>
+                </div>
+                <div
+  class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">
+  <div
+    class="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+    </svg>
+  </div>
+  <h3 class="text-xl md:text-2xl font-black mb-4">Partido Missão</h3>
+  <p class="text-zinc-500 font-medium">Fundadora de honra do partido que representa o futuro</p>
+</div>
+
+            </div>
+            <div class="grid grid-cols-2 gap-4 md:gap-6">
+                <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
+                    <img src="https://lh3.googleusercontent.com/d/17J2Q7H2QlY13dvzqImV2w63EGJ4xK8Q6"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        alt="Galeria 1">
+                </div>
+                <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
+                    <img src="https://lh3.googleusercontent.com/d/1oVlTVdcuooCTlUs3IoF9NEd1aGc5UBE2"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        alt="Galeria 2">
+                </div>
+                <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
+                    <img src="https://lh3.googleusercontent.com/d/1DF11CEC9lt6DR4u47O63pZx0J0OokYy9"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        alt="Galeria 3">
+                </div>
+                <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
+                    <img src="https://lh3.googleusercontent.com/d/1d1Rw7j3IQDlDtkJEKc_Pp_rP0bhDacMQ"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        alt="Galeria 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Defense -->
+    <section id="defense" class="py-32 bg-[#050505] text-white relative overflow-hidden scroll-mt-24">
+        <div class="bg-blob top-0 left-0 opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24 reveal-node">
+                <span class="text-yellow-400 font-black uppercase tracking-[0.4em] text-xs">Missão de Verdade</span>
+                <h2 class="text-5xl md:text-7xl font-black mt-8 mb-6 tracking-tighter">O Que Eu <span
+                        class="text-yellow-400">Defendo</span></h2>
+            </div>
+            <div id="proposals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Redes Sociais -->
+    <section class="py-24 bg-white text-zinc-950 scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal-node">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter">Acompanhe minha <span
+                    class="text-[#700EBB] bold">Missão</span></h2>
+            <p class="text-zinc-500 text-lg md:text-xl font-medium mb-12">Siga nossas redes e fique por dentro de cada
+                passo da nossa caminhada.</p>
+            <div class="flex flex-col gap-6">
+<a href="https://www.instagram.com/aludydias" target="_blank"
+   class="group relative rounded-[2.5rem] p-[2px] overflow-hidden
+          transition-all duration-500
+          shadow-[0_18px_55px_-28px_rgba(0,0,0,0.35)]
+          hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]
+          hover:-translate-y-[2px]
+          active:translate-y-0 active:scale-[0.995]">
+
+  <!-- borda animada -->
+  <span class="absolute inset-0 bg-gradient-to-r from-[#700EBB] via-[#A855F7] to-[#700EBB]
+               animate-[spin_6s_linear_infinite]"></span>
+
+  <!-- brilho interno sutil -->
+  <span class="pointer-events-none absolute inset-[2px] rounded-[2.4rem]
+               bg-gradient-to-b from-white/55 to-white/0 opacity-70
+               group-hover:opacity-0 transition-opacity duration-500"></span>
+
+  <div class="relative rounded-[2.4rem] bg-white
+              py-10 flex items-center justify-center gap-4
+              text-2xl font-black
+              transition-all duration-500
+              ring-1 ring-black/5
+              group-hover:bg-[#700EBB]
+              group-hover:text-white">
+                Instagram
+                <i class="fa-brands fa-instagram text-3xl transition-colors duration-500 group-hover:text-white"></i>
+              </div>
+            </a>
+            
+            <a href="https://x.com/Aludydias" target="_blank"
+               class="group relative rounded-[2.5rem] p-[2px] overflow-hidden
+                      transition-all duration-500
+                      shadow-[0_18px_55px_-28px_rgba(0,0,0,0.35)]
+                      hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]
+                      hover:-translate-y-[2px]
+                      active:translate-y-0 active:scale-[0.995]">
+            
+              <span class="absolute inset-0 bg-gradient-to-r from-[#700EBB] via-[#9333EA] to-[#700EBB]
+                           animate-[spin_7s_linear_infinite]"></span>
+            
+              <span class="pointer-events-none absolute inset-[2px] rounded-[2.4rem]
+                           bg-gradient-to-b from-white/55 to-white/0 opacity-70
+                           group-hover:opacity-0 transition-opacity duration-500"></span>
+            
+              <div class="relative rounded-[2.4rem] bg-white
+                          py-10 flex items-center justify-center gap-4
+                          text-2xl font-black
+                          transition-all duration-500
+                          ring-1 ring-black/5
+                          group-hover:bg-[#700EBB]
+                          group-hover:text-white">
+                Twitter
+                <i class="fa-brands fa-x-twitter text-3xl transition-colors duration-500 group-hover:text-white"></i>
+              </div>
+            </a>
+            
+            <a href="https://www.tiktok.com/@aludydias0" target="_blank"
+               class="group relative rounded-[2.5rem] p-[2px] overflow-hidden
+                      transition-all duration-500
+                      shadow-[0_18px_55px_-28px_rgba(0,0,0,0.35)]
+                      hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]
+                      hover:-translate-y-[2px]
+                      active:translate-y-0 active:scale-[0.995]">
+            
+              <span class="absolute inset-0 bg-gradient-to-r from-[#700EBB] via-[#C084FC] to-[#700EBB]
+                           animate-[spin_8s_linear_infinite]"></span>
+            
+              <span class="pointer-events-none absolute inset-[2px] rounded-[2.4rem]
+                           bg-gradient-to-b from-white/55 to-white/0 opacity-70
+                           group-hover:opacity-0 transition-opacity duration-500"></span>
+            
+              <div class="relative rounded-[2.4rem] bg-white
+                          py-10 flex items-center justify-center gap-4
+                          text-2xl font-black
+                          transition-all duration-500
+                          ring-1 ring-black/5
+                          group-hover:bg-[#700EBB]
+                          group-hover:text-white">
+                TikTok
+                <i class="fa-brands fa-tiktok text-3xl transition-colors duration-500 group-hover:text-white"></i>
+              </div>
+            </a>
+                        </a>
+
+            <!-- YOUTUBE (novo) -->
+            <a href="https://youtube.com/@aludydias14?si=d_xDEcjyHM2X39TA" target="_blank"
+               class="group relative rounded-[2.5rem] p-[2px] overflow-hidden
+                      transition-all duration-500
+                      shadow-[0_18px_55px_-28px_rgba(0,0,0,0.35)]
+                      hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]
+                      hover:-translate-y-[2px]
+                      active:translate-y-0 active:scale-[0.995]">
+
+              <span class="absolute inset-0 bg-gradient-to-r from-[#700EBB] via-[#A855F7] to-[#700EBB]
+                           animate-[spin_7s_linear_infinite]"></span>
+
+              <span class="pointer-events-none absolute inset-[2px] rounded-[2.4rem]
+                           bg-gradient-to-b from-white/55 to-white/0 opacity-70
+                           group-hover:opacity-0 transition-opacity duration-500"></span>
+
+              <div class="relative rounded-[2.4rem] bg-white
+                          py-10 flex items-center justify-center gap-4
+                          text-2xl font-black
+                          transition-all duration-500
+                          ring-1 ring-black/5
+                          group-hover:bg-[#700EBB]
+                          group-hover:text-white">
+                YouTube
+                <i class="fa-brands fa-youtube text-3xl transition-colors duration-500 group-hover:text-white"></i>
+              </div>
+            </a>
+
+            </div> <!-- FECHA: .flex.flex-col.gap-6 -->
+        </div> <!-- FECHA: .max-w-4xl -->
+    </section> <!-- FECHA: seção Redes Sociais -->
+    <!-- Destaque Vídeo e Frase -->
+    <section class="py-24 bg-white text-zinc-950 scroll-mt-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="reveal-node bg-zinc-950 rounded-[3rem] overflow-hidden shadow-2xl">
+
+                <!-- Imagem destaque (sem botão e sem ícone) -->
+                <div class="relative aspect-video w-full overflow-hidden">
+                    <img src="https://lh3.googleusercontent.com/d/1GO_jnnAGdankYM1fJCKDQEzO949NyR64"
+                        class="w-full h-full object-cover" alt="Ludymilla Destaque">
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="p-10 md:p-16">
+                    <div class="flex items-center gap-4 mb-10">
+
+                        <!-- QUADRADO DA IMAGEM -->
+                        <div
+                            class="w-16 h-16 bg-yellow-400 rounded-2xl overflow-hidden flex items-center justify-center">
+
+                            <img
+                                src="https://lh3.googleusercontent.com/d/11ixgjK21K_NxCeaRmOpIjGHH7XwUprWV"
+                                alt="Foto de perfil"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
+
+                        </div>
+
+                        <!-- NOME E USUÁRIO -->
+                        <div class="flex flex-col">
+                            <span class="text-white font-black text-2xl leading-none">
+                                Ludymilla
+                            </span>
+                            <span class="text-[#DB15BB] font-bold text-lg tracking-tight mt-1">
+                                @aludydias
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- FRASE -->
+                    <p class="text-white text-2xl md:text-4xl font-medium italic leading-relaxed tracking-tight">
+                        "Juntos somos a força que vai mudar o rumo do nosso país.
+                        O Brasil não pode mais esperar por velhas soluções!"
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Join -->
+    <section id="join" data-join-section class="py-32 bg-[#FACC15] relative overflow-hidden scroll-mt-24">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal-node">
+            <h2 data-join-title class="text-4xl md:text-[52px] font-black text-zinc-950 mb-8 leading-tight tracking-tight">O Brasil precisa de coragem.<br>Guarulhos precisa de ação.</h2>
+            </div>
+            <div class="max-w-[580px] mx-auto bg-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl reveal-node">
+                <div class="flex p-1 bg-zinc-100 rounded-2xl mb-10">
+                    <button id="btn-v" onclick="switchForm('volunteer')"
+                        class="flex-1 py-3 rounded-xl font-bold text-sm bg-white text-zinc-950 shadow-sm transition-all">Seja
+                        Voluntário</button>
+                    <button id="btn-p" onclick="switchForm('project')"
+                        class="flex-1 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-800 transition-all">Sugerir
+                        Projeto</button>
+                </div>
+                <div id="form-container">
+                    <form id="form-v" class="form-content active space-y-4">
+                        <input name="nome" type="text" placeholder="Seu nome" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        <input name="tel" type="tel" placeholder="Telefone / WhatsApp" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        <input name="ajuda" type="text" placeholder="Como você poderia ajudar?" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        <input name="cidade" type="text" placeholder="Sua Cidade" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+
+                        <div class="flex items-start gap-3 px-2 py-2">
+                            <input type="checkbox" id="terms-v" required
+                                class="mt-1 w-5 h-5 rounded border-zinc-300 text-emerald-600 cursor-pointer transition-all"
+                                style="accent-color: #10b981;">
+                            <label for="terms-v" class="text-sm text-zinc-600 leading-snug cursor-pointer">
+                                Eu aceito os <a target="_blank" href="https://www.termsfeed.com/live/7c2c518d-e429-4b05-b0a9-2131f3702609" class="font-bold underline">termos de uso</a> e autorizo o
+                                contato para fins de mobilização.
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-[#FACC15] text-zinc-950 py-5 rounded-xl font-black text-xl hover:bg-yellow-400 transition-all shadow-xl mt-6">Enviar</button>
+                    </form>
+                        <form id="form-p" class="form-content space-y-4">
+                        <input name="proj" type="text" placeholder="Nome do Projeto" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        <input name="ajuda_p" type="text" placeholder="No que ele ajudaria a cidade?" required
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        <textarea name="resumo" placeholder="Resumo da ideia..." required rows="3"
+                            class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium resize-none"></textarea>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input name="tel_p" type="tel" placeholder="Seu Telefone" required
+                                class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                            <input name="nome_p" type="text" placeholder="Seu Nome" required
+                                class="w-full border border-zinc-200 rounded-xl px-6 py-4 focus:border-yellow-500 outline-none font-medium">
+                        </div>
+
+                        <div class="flex items-start gap-3 px-2 py-2">
+                            <input type="checkbox" id="terms-p" required
+                                class="mt-1 w-5 h-5 rounded border-zinc-300 text-emerald-600 cursor-pointer transition-all"
+                                style="accent-color: #10b981;">
+                            <label for="terms-p" class="text-sm text-zinc-600 leading-snug cursor-pointer">
+                                Eu concordo em compartilhar esta ideia e aceito os <a target="_blank" href="https://www.termsfeed.com/terms-conditions/generator/?utm_source=chatgpt.com"
+                                    class="font-bold underline">termos de uso</a>.
+                            </label>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-[#FACC15] text-zinc-950 py-5 rounded-xl font-black text-xl hover:bg-yellow-400 transition-all shadow-xl mt-6">Enviar
+                            Sugestão</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate -->
+    <section class="py-24 bg-zinc-950 text-center relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 reveal-node">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter">Filie-se à <span
+                    class="text-yellow-400 italic">Missão</span></h2>
+            <p class="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">Torne-se parte oficial do partido que
+                vai mudar o Brasil. A filiação é o primeiro passo para a mudança real.</p>
+            <a href="https://missao.org.br/" target="_blank"
+                class="inline-flex items-center gap-6 bg-white text-zinc-950 px-12 py-6 rounded-2xl font-black text-2xl hover:bg-yellow-400 transition-all shadow-2xl">Quero
+                me filiar agora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 py-20 px-6 border-t border-zinc-900">
+        <div
+    <footer class="bg-zinc-950 py-16 md:py-20 px-6 border-t border-zinc-900">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-10 md:gap-6">
+
+      <!-- ESQUERDA (desktop) / TOPO (mobile) -->
+      <div class="flex items-center gap-4 justify-center md:justify-self-start">
+        <img
+          src="https://drive.google.com/thumbnail?id=17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg&sz=w300"
+          class="h-11 md:h-12"
+          alt="Logo oficial Ludymilla Dias Pela Missão"
+          referrerpolicy="no-referrer"
+          crossorigin="anonymous"
+          onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w300';"
+        />
+        <div class="flex flex-col text-left">
+          <span class="font-black text-lg md:text-xl leading-none uppercase text-white">Ludymilla</span>
+          <span class="text-yellow-400 font-black text-lg md:text-xl leading-none uppercase">Dias</span>
+        </div>
+      </div>
+
+      <!-- CENTRO (ícones sempre centralizados) -->
+      <div class="flex items-center justify-center gap-6 md:justify-self-center">
+        <a href="https://www.instagram.com/aludydias" target="_blank" class="social-icon" aria-label="Instagram">
+          <i class="fa-brands fa-instagram text-2xl"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@aludydias0?_r=1&_t=ZS-934QTiIJPYj" target="_blank" class="social-icon" aria-label="TikTok">
+          <i class="fa-brands fa-tiktok text-2xl"></i>
+        </a>
+
+        <a href="https://x.com/Aludydias" target="_blank" class="social-icon" aria-label="X (Twitter)">
+          <i class="fa-brands fa-x-twitter text-2xl"></i>
+        </a>
+
+        <a href="https://youtube.com/@aludydias14?si=d_xDEcjyHM2X39TA" target="_blank" class="social-icon" aria-label="YouTube">
+          <i class="fa-brands fa-youtube text-2xl"></i>
+        </a>
+      </div>
+
+      <!-- DIREITA (desktop) / BASE (mobile) -->
+      <div class="justify-center md:justify-self-end">
+        <p class="text-zinc-600 text-[10px] tracking-[0.28em] text-center md:text-right leading-relaxed">
+          © Copy Cronep e Miguel de Freitas - Todos os Direitos Reservados.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+    
+    <script>
+        // Proposals Data
+        const defenses = [
+            { title: "Combate à corrupção", desc: "Tolerância zero com o desvio de dinheiro público e fortalecimento da fiscalização." },
+            { title: "Responsabilidade fiscal", desc: "Gestão técnica do orçamento, garantindo que o Estado gaste o que arrecada." },
+            { title: "Saúde de Qualidade", desc: "Foco na eficiência do atendimento, redução de filas e modernização hospitalar." },
+            { title: "Meio Ambiente", desc: "Proteção ativa aliada ao desenvolvimento sustentável e tecnológico." },
+            { title: "Fim de Privilégios", desc: "Reforma administrativa real para acabar com super-salários da elite estatal." },
+            { title: "Leis Penais Rígidas", desc: "Combate à impunidade através de penas mais rigorosas para crimes violentos." },
+            { title: "Educação Prioritária", desc: "Foco no ensino básico de qualidade e na formação técnica para o mercado." },
+            { title: "Industrialização", desc: "Incentivos para levar desenvolvimento industrial e empregos para a região." },
+            { title: "Guerra ao Tráfico", desc: "Enfrentamento direto ao crime organizado e proteção das comunidades." }
+        ];
+
+        // Grid Rendering
+        const grid = document.getElementById('proposals-grid');
+        if (grid) {
+  defenses.forEach((item, idx) => {
+    grid.innerHTML += `
+      <div class="reveal-node bg-[#0b0b10] p-12 rounded-[3rem]
+                  border border-white/5 ring-1 ring-[#700EBB]/10
+                  hover:ring-[#DB15BB]/20
+                  transition-all duration-700 group hover:-translate-y-2"
+           style="transition-delay:${idx*100}ms">
+
+        <div class="mb-10 p-5 rounded-2xl bg-white/5 border border-white/10 text-[#FACC15]">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
+
+        <h3 class="text-2xl font-black mb-5 text-white group-hover:text-[#DB15BB]">${item.title}</h3>
+        <p class="text-zinc-400 text-lg">${item.desc}</p>
+        <div class="mt-8 w-12 h-1 bg-[#700EBB]/30 group-hover:bg-[#FACC15] transition-all"></div>
+      </div>
+    `;
+  });
+}
+
+    // Intersection Observer for Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal-node').forEach(node => observer.observe(node));
+
+     function switchForm(mode) {
+  const btnV = document.getElementById('btn-v');
+  const btnP = document.getElementById('btn-p');
+
+  const formV = document.getElementById('form-v');
+  const formP = document.getElementById('form-p');
+
+  const joinSection = document.querySelector('[data-join-section]');
+  const joinTitle = document.querySelector('[data-join-title]');
+
+  // troca suave de cores
+  joinSection.classList.add('transition-colors', 'duration-700');
+  joinTitle.classList.add('transition-colors', 'duration-700');
+
+  if (mode === 'volunteer') {
+    // forms
+    formV.classList.add('active');
+    formP.classList.remove('active');
+
+    // botões
+    btnV.className = "flex-1 py-3 rounded-xl font-bold text-sm bg-white text-zinc-950 shadow-sm transition-all";
+    btnP.className = "flex-1 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-800 transition-all";
+
+    // tema roxo
+    joinSection.classList.remove('bg-[#FACC15]');
+    joinSection.classList.add('bg-[#700EBB]');
+
+    joinTitle.classList.remove('text-zinc-950');
+    joinTitle.classList.add('text-white');
+
+  } else {
+    // forms
+    formP.classList.add('active');
+    formV.classList.remove('active');
+
+    // botões
+    btnP.className = "flex-1 py-3 rounded-xl font-bold text-sm bg-white text-zinc-950 shadow-sm transition-all";
+    btnV.className = "flex-1 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-800 transition-all";
+
+    // volta amarelo
+    joinSection.classList.remove('bg-[#700EBB]');
+    joinSection.classList.add('bg-[#FACC15]');
+
+    joinTitle.classList.remove('text-white');
+    joinTitle.classList.add('text-zinc-950');
+  }
+}
+
+// inicia no voluntário
+switchForm('volunteer');
+
+
+        // Seleciona os dois formulários
+        
+        // Substitua este URL pelo seu Web App do Google Apps Script
+
+        // ======= COLE AQUI SUA URL DO GOOGLE APPS SCRIPT =======
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz9FGpQzU8kN9RCNuVdvG-FrxnxeprXVKz82FZPFZ7gwsFb-1C2WM-uO1K32nK3f_06/exec';
+
+        // ======= FUNÇÃO PARA TROCAR ENTRE FORMULÁRIOS =======
+       
+        // ======= FUNÇÃO DE ENVIO COM ANIMAÇÃO =======
+        function handleFormSubmit(form) {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.innerText = "Enviando...";
+
+                const formData = new FormData(form);
+
+                fetch(scriptURL, { method: 'POST', body: formData })
+                    .then(response => {
+                        // Limpa o formulário
+                        form.reset();
+
+                        // Cria mensagem de sucesso animada
+                        const success = document.createElement('span');
+                        success.className = 'submit-success';
+                        success.innerHTML = '✔ Enviado com Sucesso!';
+                        submitButton.parentNode.insertBefore(success, submitButton.nextSibling);
+
+                        // Depois de 2s volta o botão ao normal e remove mensagem
+                        setTimeout(() => {
+                            submitButton.disabled = false;
+                            submitButton.innerText = form.id === 'form-v' ? 'Enviar para a Missão' : 'Enviar Sugestão';
+                            success.remove();
+                        }, 2000);
+                    })
+                    .catch(error => {
+                        submitButton.innerText = 'Erro! Tente novamente';
+                        console.error('Erro ao enviar:', error);
+                        setTimeout(() => {
+                            submitButton.disabled = false;
+                            submitButton.innerText = form.id === 'form-v' ? 'Enviar para a Missão' : 'Enviar Sugestão';
+                        }, 2000);
+                    });
+            });
+        }
+
+        // ======= INICIALIZAÇÃO DOS FORMULÁRIOS =======
+        handleFormSubmit(document.getElementById('form-v'));
+        handleFormSubmit(document.getElementById('form-p'));
+
+
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('main-header');
+            if (window.scrollY > 50) { h.classList.add('py-3', 'bg-[#050505]/95'); h.classList.remove('py-5'); }
+            else { h.classList.add('py-5'); h.classList.remove('py-3', 'bg-[#050505]/95'); }
+        });
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
