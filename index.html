@@ -712,12 +712,10 @@ function updateItemsPerView() {
 }
 
 function updatePosition() {
-    if (!track) return;
-    // The shift percentage is based on the track's total width.
-    // If we have 6 items and 3 are visible, shifting 1 page (3 items) is 50% of the track width.
-    const totalItems = DEFENSES.length;
-    const shiftPercentage = (currentIndex * itemsPerView * 100) / totalItems;
-    track.style.transform = `translateX(-${shiftPercentage}%)`;
+    if (!track || !track.parentElement) return;
+    // Calculate displacement based on container width for perfect alignment
+    const containerWidth = track.parentElement.clientWidth;
+    track.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
 }
 
 function updateDots() {
@@ -725,6 +723,7 @@ function updateDots() {
     const totalPages = Math.ceil(DEFENSES.length / itemsPerView);
     // Ensure currentIndex doesn't exceed totalPages after a resize
     if (currentIndex >= totalPages) currentIndex = totalPages - 1;
+    if (currentIndex < 0) currentIndex = 0;
     
     dotsContainer.innerHTML = Array.from({ length: totalPages }).map((_, i) => `
         <button class="h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-8 bg-yellow-400' : 'w-2 bg-white/20'}" 
@@ -834,11 +833,9 @@ function init() {
     window.addEventListener('resize', () => {
         const oldItems = itemsPerView;
         updateItemsPerView();
-        if (oldItems !== itemsPerView) {
-            currentIndex = 0;
-            updateDots();
-            updatePosition();
-        }
+        // Recalculate dots and position on resize
+        updateDots();
+        updatePosition();
     });
 
     // Form mode switching
@@ -874,6 +871,7 @@ if (document.readyState === 'loading') {
 } else {
     init();
 }
+
 
 </script>
 </body>
