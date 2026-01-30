@@ -6,13 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludymilla Dias | Pela Missão</title>
     <link rel="shortcut icon" href="img/favicon_icone.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link rel="preload"
+      as="style"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
-        rel="stylesheet">
     <style>
+        @font-face {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("fonts/inter-latin-400-normal.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url("fonts/inter-latin-500-normal.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url("fonts/inter-latin-700-normal.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url("fonts/inter-latin-900-normal.woff2") format("woff2");
+        }
+
         :root {
             --primary: #facc15;
             --dark: #050505;
@@ -272,17 +311,16 @@
             <div class="flex flex-col items-center">
                 <!-- Bloco de Imagem com Fundo Amarelo -->
                 <div class="w-full max-w-[700px] relative reveal-node mb-16">
-                    <div class="aspect-[4/5] bg-yellow-400 rounded-[3.5rem] overflow-hidden relative shadow-2xl">
-                        <img src="img/FotoLudy.webp"
+                <div class="aspect-[3/4] md:aspect-[4/5] bg-yellow-400 rounded-[3.5rem] overflow-hidden relative shadow-2xl">
+                        <img src="img/FotoLudyNova.webp"
                             alt="Ludymilla Dias" class="absolute inset-0 w-full h-full object-cover object-top">
                         <!-- Badge Flutuante "Pré-Candidata Missão" -->
-                        <div class="absolute bottom-10 right-10 bg-black text-white px-8 py-5 rounded-3xl flex items-center gap-4 shadow-2xl border border-white/10">
+                        <div class="absolute bottom-4 right-4 md:bottom-10 md:right-10 bg-black/90 text-white px-4 py-3 md:px-8 md:py-5 rounded-2xl md:rounded-3xl flex items-center gap-3 md:gap-4 shadow-2xl border border-white/10">
                         <img src="img/Missao.webp"
                                 class="w-10 h-10 object-contain" alt="Missão Logo">
                             <div class="flex flex-col">
-                                <span
-                                    class="text-[10px] font-black uppercase tracking-widest text-zinc-500">Pré-candidata</span>
-                                <span class="text-xl font-black italic uppercase leading-tight">Missão</span>
+                                <span class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-zinc-500">Pré-candidata</span>
+                                <span class="text-base md:text-xl font-black italic uppercase leading-tight">Missão</span>
                             </div>
                         </div>
                     </div>
@@ -437,10 +475,175 @@
                 <h2 class="text-5xl md:text-7xl font-black mt-8 mb-6 tracking-tighter">O Que Eu <span
                         class="text-yellow-400">Defendo</span></h2>
             </div>
-            <div id="proposals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Injected via JS -->
-            </div>
+<!-- MOBILE (prioridade): Lista compacta (apenas títulos, sem cortar) -->
+<div class="md:hidden mt-10 space-y-3">
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-user-shield text-xl"></i>
         </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Responsabilidade Política
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-mobile-screen-button text-xl"></i>
+        </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Proteção juvenil
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-paw text-xl"></i>
+        </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Cuidado com animais
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-people-roof text-xl"></i>
+        </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Responsabilidade parental
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-book-open-reader text-xl"></i>
+        </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Educação de qualidade
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+    <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 min-w-0">
+        <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
+          <i class="fa-solid fa-traffic-light text-xl"></i>
+        </div>
+        <h3 class="text-lg font-black text-white leading-tight whitespace-normal break-words">
+          Infraestrutura inteligente
+        </h3>
+      </div>
+    </summary>
+  </details>
+
+</div>
+
+
+<!-- DESKTOP/TABLET: Grid elegante (mantém o padrão original do site) -->
+<!-- DESKTOP/TABLET: Grid elegante (apenas títulos, sem legenda) -->
+<div class="hidden md:grid mt-16 grid-cols-2 lg:grid-cols-3 gap-8">
+
+  <!-- Card 1 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-user-shield text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Responsabilidade Política
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-mobile-screen-button text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Proteção juvenil
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-paw text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Cuidado com animais
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+  <!-- Card 4 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-people-roof text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Responsabilidade parental
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+  <!-- Card 5 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-book-open-reader text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Educação de qualidade
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+  <!-- Card 6 -->
+  <article class="reveal-node bg-[#0a0a0a]/80 p-12 rounded-[3rem] border border-zinc-900/80 hover:border-yellow-400/20 transition-all duration-700 group hover:-translate-y-2 ring-1 ring-white/5 min-h-[260px] flex flex-col">
+    <div class="mb-10 p-5 rounded-2xl bg-zinc-900/30 border border-zinc-800 text-yellow-400 group-hover:scale-110 transition-transform w-fit">
+      <i class="fa-solid fa-traffic-light text-2xl"></i>
+    </div>
+    <h3 class="text-2xl lg:text-3xl font-black text-white leading-tight whitespace-normal break-words">
+      Infraestrutura inteligente
+    </h3>
+    <div class="mt-auto pt-10">
+      <div class="w-12 h-1 bg-[#700EBB]/30 group-hover:bg-yellow-400 transition-all"></div>
+    </div>
+  </article>
+
+</div>
+
+
     </section>
 
     <!-- Redes Sociais -->
@@ -711,13 +914,16 @@
 
       <!-- ESQUERDA (desktop) / TOPO (mobile) -->
       <div class="flex items-center gap-4 justify-center md:justify-self-start">
-        <img
-          src="img/LogoLudy.webp"
-          class="h-11 md:h-12"
-          alt="Logo oficial Ludymilla Dias Pela Missão"
-          referrerpolicy="no-referrer"
-          crossorigin="anonymous"
-          onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w300';"
+        <img src="img/LogoLudy.webp"
+             alt="Logo oficial Ludymilla Dias Pela Missão"
+             width="320"
+             height="180"
+             fetchpriority="high"
+             decoding="async"
+                class="max-w-[140px] sm:max-w-[180px] h-auto object-contain transition-transform duration-500 group-hover:scale-110"
+             referrerpolicy="no-referrer"
+             crossorigin="anonymous"
+             onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xa0OLVD…'"
         />
         <div class="flex flex-col text-left">
           <span class="font-black text-lg md:text-xl leading-none uppercase text-white">Ludymilla</span>
@@ -911,7 +1117,6 @@ switchForm('volunteer');
             else { h.classList.add('py-5'); h.classList.remove('py-3', 'bg-[#050505]/95'); }
         });
     </script>
-    <script type="module" src="/index.tsx"></script>
 </body>
 
 </html>
