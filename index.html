@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ludymilla Dias | Pela Missão</title>
+    <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="shortcut icon" href="img/favicon_icone.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
@@ -18,7 +19,7 @@
             font-display: swap;
             src: url("fonts/inter-latin-400-normal.woff2") format("woff2");
         }
-
+        
         @font-face {
             font-family: "Inter";
             font-style: normal;
@@ -26,7 +27,7 @@
             font-display: swap;
             src: url("fonts/inter-latin-500-normal.woff2") format("woff2");
         }
-
+        
         @font-face {
             font-family: "Inter";
             font-style: normal;
@@ -34,7 +35,7 @@
             font-display: swap;
             src: url("fonts/inter-latin-700-normal.woff2") format("woff2");
         }
-
+        
         @font-face {
             font-family: "Inter";
             font-style: normal;
@@ -42,19 +43,19 @@
             font-display: swap;
             src: url("fonts/inter-latin-900-normal.woff2") format("woff2");
         }
-
+        
         :root {
             --primary: #facc15;
             --dark: #050505;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--dark);
             color: #000000;
             overflow-x: hidden;
         }
-
+        
         /* Grain Overlay Effect */
         .grain-overlay {
             position: fixed;
@@ -67,46 +68,46 @@
             opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-
+        
         /* Scroll Reveal System */
         .reveal-node {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
         }
-
+        
         .reveal-node.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
-
+        
         ::-webkit-scrollbar-track {
             background: #050505;
         }
-
+        
         ::-webkit-scrollbar-thumb {
             background: #333;
             border-radius: 10px;
         }
-
+        
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
         }
-
+        
         /* Form State */
         .form-content {
             display: none;
         }
-
+        
         .form-content.active {
             display: block;
         }
-
+        
         /* Background Animated Blobs */
         .bg-blob {
             position: absolute;
@@ -119,34 +120,34 @@
             pointer-events: none;
             animation: float-blob 20s infinite alternate ease-in-out;
         }
-
+        
         @keyframes float-blob {
             0% {
                 transform: translate(-10%, -10%) scale(1);
             }
-
+            
             50% {
                 transform: translate(10%, 5%) scale(1.1);
             }
-
+            
             100% {
                 transform: translate(-5%, 15%) scale(0.9);
             }
         }
-
+        
         .social-icon i {
             color: white;
             transition: color 0.3s ease, transform 0.3s ease;
             margin: 5px;
         }
-
+        
         .social-icon:hover i {
             color: #d4af37;
             /* dourado */
             transform: scale(1.15);
         }
-
-
+        
+        
         /* Animação de check ao enviar */
         .submit-success {
             position: relative;
@@ -157,44 +158,46 @@
             color: #065f46;
             /* verde */
         }
-
+        
         @keyframes fadeInOut {
             0% {
                 opacity: 0;
                 transform: scale(0.8);
             }
-
+            
             20% {
                 opacity: 1;
                 transform: scale(1.2);
             }
-
+            
             80% {
                 opacity: 1;
                 transform: scale(1);
             }
-
+            
             100% {
                 opacity: 0;
                 transform: scale(0.8);
             }
         }
-
+        
         .text-zinc-600:hover {
             color: #676978;
         }
         @media (max-width: 768px) {
-  .bg-blob {
-    animation: none !important;
-    filter: blur(40px);
-  }
+            .bg-blob {
+                animation: none !important;
+                filter: blur(40px);
+            }
 }
     </style>
+    <link rel="stylesheet" href="dist/tailwind.min.css">
 </head>
 
 <body class="selection:bg-yellow-400 selection:text-zinc-950">
+    
     <div class="grain-overlay"></div>
-
+    
     <!-- Header -->
     <header id="main-header"
         class="fixed top-0 left-0 w-full z-[100] px-6 py-5 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5 transition-all">
