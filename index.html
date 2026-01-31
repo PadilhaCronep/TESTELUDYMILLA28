@@ -10,187 +10,8 @@
     <link rel="shortcut icon" href="img/favicon_icone.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <style>
-        @font-face {
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url("fonts/inter-latin-400-normal.woff2") format("woff2");
-        }
-        
-        @font-face {
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 500;
-            font-display: swap;
-            src: url("fonts/inter-latin-500-normal.woff2") format("woff2");
-        }
-        
-        @font-face {
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url("fonts/inter-latin-700-normal.woff2") format("woff2");
-        }
-        
-        @font-face {
-            font-family: "Inter";
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url("fonts/inter-latin-900-normal.woff2") format("woff2");
-        }
-        
-        :root {
-            --primary: #facc15;
-            --dark: #050505;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark);
-            color: #000000;
-            overflow-x: hidden;
-        }
-        
-        /* Grain Overlay Effect */
-        .grain-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-        
-        /* Scroll Reveal System */
-        .reveal-node {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-        
-        .reveal-node.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-        
-        /* Form State */
-        .form-content {
-            display: none;
-        }
-        
-        .form-content.active {
-            display: block;
-        }
-        
-        /* Background Animated Blobs */
-        .bg-blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(250, 204, 21, 0.08) 0%, rgba(250, 204, 21, 0) 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: 0;
-            pointer-events: none;
-            animation: float-blob 20s infinite alternate ease-in-out;
-        }
-        
-        @keyframes float-blob {
-            0% {
-                transform: translate(-10%, -10%) scale(1);
-            }
-            
-            50% {
-                transform: translate(10%, 5%) scale(1.1);
-            }
-            
-            100% {
-                transform: translate(-5%, 15%) scale(0.9);
-            }
-        }
-        
-        .social-icon i {
-            color: white;
-            transition: color 0.3s ease, transform 0.3s ease;
-            margin: 5px;
-        }
-        
-        .social-icon:hover i {
-            color: #d4af37;
-            /* dourado */
-            transform: scale(1.15);
-        }
-        
-        
-        /* Animação de check ao enviar */
-        .submit-success {
-            position: relative;
-            display: inline-block;
-            animation: fadeInOut 2s ease forwards;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #065f46;
-            /* verde */
-        }
-        
-        @keyframes fadeInOut {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            
-            20% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-            
-            80% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            
-            100% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-        }
-        
-        .text-zinc-600:hover {
-            color: #676978;
-        }
-        @media (max-width: 768px) {
-            .bg-blob {
-                animation: none !important;
-                filter: blur(40px);
-            }
-}
-    </style>
     <link rel="stylesheet" href="css/tailwind.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="selection:bg-yellow-400 selection:text-zinc-950">
@@ -199,7 +20,7 @@
     
     <!-- Header -->
     <header id="main-header"
-        class="fixed top-0 left-0 w-full z-[100] px-6 py-5 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5 transition-all">
+        class="fixed top-0 left-0 w-full z-[100] px-6 py-5 bg-[#050505]/90 border-b border-white/5 transition-all">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
                 <div class="h-12 w-auto overflow-hidden">
@@ -475,7 +296,7 @@
 <!-- MOBILE (prioridade): Lista compacta (apenas títulos, sem cortar) -->
 <div class="md:hidden mt-10 space-y-3">
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -488,7 +309,7 @@
     </summary>
   </details>
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -501,7 +322,7 @@
     </summary>
   </details>
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -514,7 +335,7 @@
     </summary>
   </details>
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -527,7 +348,7 @@
     </summary>
   </details>
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -540,7 +361,7 @@
     </summary>
   </details>
 
-  <details class="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+  <details class="group rounded-3xl border border-white/10 bg-white/5 overflow-hidden">
     <summary class="list-none cursor-pointer px-5 py-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 min-w-0">
         <div class="h-12 w-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center text-yellow-400 shrink-0">
@@ -955,152 +776,7 @@
   </div>
 </footer>
     
-    <script>
-        // Proposals Data
-    // Intersection Observer for Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal-node').forEach(node => observer.observe(node));
-
-     function switchForm(mode) {
-  const btnV = document.getElementById('btn-v');
-  const btnP = document.getElementById('btn-p');
-
-  const formV = document.getElementById('form-v');
-  const formP = document.getElementById('form-p');
-
-  const joinSection = document.querySelector('[data-join-section]');
-  const joinTitle = document.querySelector('[data-join-title]');
-
-  // troca suave de cores
-  joinSection.classList.add('transition-colors', 'duration-700');
-  joinTitle.classList.add('transition-colors', 'duration-700');
-
-  if (mode === 'volunteer') {
-    // forms
-    formV.classList.add('active');
-    formP.classList.remove('active');
-
-    // botões
-    btnV.className = "flex-1 py-3 rounded-xl font-bold text-sm bg-white text-zinc-950 shadow-sm transition-all";
-    btnP.className = "flex-1 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-800 transition-all";
-
-    // tema roxo
-    joinSection.classList.remove('bg-[#FACC15]');
-    joinSection.classList.add('bg-[#700EBB]');
-
-    joinTitle.classList.remove('text-zinc-950');
-    joinTitle.classList.add('text-white');
-
-  } else {
-    // forms
-    formP.classList.add('active');
-    formV.classList.remove('active');
-
-    // botões
-    btnP.className = "flex-1 py-3 rounded-xl font-bold text-sm bg-white text-zinc-950 shadow-sm transition-all";
-    btnV.className = "flex-1 py-3 rounded-xl font-bold text-sm text-zinc-500 hover:text-zinc-800 transition-all";
-
-    // volta amarelo
-    joinSection.classList.remove('bg-[#700EBB]');
-    joinSection.classList.add('bg-[#FACC15]');
-
-    joinTitle.classList.remove('text-white');
-    joinTitle.classList.add('text-zinc-950');
-  }
-}
-
-// inicia no voluntário
-switchForm('volunteer');
-
-
-        // Seleciona os dois formulários
-        
-        // Substitua este URL pelo seu Web App do Google Apps Script
-
-        // ======= COLE AQUI SUA URL DO GOOGLE APPS SCRIPT =======
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbz9FGpQzU8kN9RCNuVdvG-FrxnxeprXVKz82FZPFZ7gwsFb-1C2WM-uO1K32nK3f_06/exec';
-
-        // ======= FUNÇÃO PARA TROCAR ENTRE FORMULÁRIOS =======
-       
-        // ======= FUNÇÃO DE ENVIO COM ANIMAÇÃO =======
-        function handleFormSubmit(form) {
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-
-                const submitButton = form.querySelector('button[type="submit"]');
-                if (!submitButton.dataset.defaultText) {
-                    submitButton.dataset.defaultText = submitButton.innerText;
-                }
-                submitButton.disabled = true;
-                submitButton.innerText = "Enviando...";
-
-                const formData = new FormData(form);
-
-                fetch(scriptURL, { method: 'POST', body: formData })
-                    .then(response => {
-                        // Limpa o formulário
-                        form.reset();
-
-                        // Cria mensagem de sucesso animada
-                        const success = document.createElement('span');
-                        success.className = 'submit-success';
-                        success.innerHTML = '✔ Enviado com Sucesso!';
-                        submitButton.parentNode.insertBefore(success, submitButton.nextSibling);
-
-                        // Depois de 2s volta o botão ao normal e remove mensagem
-                        setTimeout(() => {
-                            submitButton.disabled = false;
-                            submitButton.innerText = submitButton.dataset.defaultText;
-                            success.remove();
-                        }, 2000);
-                    })
-                    .catch(error => {
-                        submitButton.innerText = 'Erro! Tente novamente';
-                        console.error('Erro ao enviar:', error);
-                        setTimeout(() => {
-                            submitButton.disabled = false;
-                            submitButton.innerText = submitButton.dataset.defaultText;
-                        }, 2000);
-                    });
-            });
-        }
-
-        // ======= INICIALIZAÇÃO DOS FORMULÁRIOS =======
-        handleFormSubmit(document.getElementById('form-v'));
-        handleFormSubmit(document.getElementById('form-p'));
-
-
-        // Header scroll
-        const header = document.getElementById('main-header');
-        let isTicking = false;
-
-        const updateHeader = () => {
-            if (!header) return;
-            if (window.scrollY > 50) {
-                header.classList.add('py-3', 'bg-[#050505]/95');
-                header.classList.remove('py-5');
-            } else {
-                header.classList.add('py-5');
-                header.classList.remove('py-3', 'bg-[#050505]/95');
-            }
-            isTicking = false;
-        };
-
-        updateHeader();
-        window.addEventListener('scroll', () => {
-            if (!isTicking) {
-                window.requestAnimationFrame(updateHeader);
-                isTicking = true;
-            }
-        }, { passive: true });
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

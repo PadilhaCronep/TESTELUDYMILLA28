@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/inter-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/inter-latin-500-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/inter-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("fonts/inter-latin-900-normal.woff2") format("woff2");
+}
+
+:root {
+    --primary: #facc15;
+    --dark: #050505;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--dark);
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* Grain Overlay Effect */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scroll Reveal System */
+.reveal-node {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-node.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Form State */
+.form-content {
+    display: none;
+}
+
+.form-content.active {
+    display: block;
+}
+
+/* Background Animated Blobs */
+.bg-blob {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.08) 0%, rgba(250, 204, 21, 0) 70%);
+    border-radius: 50%;
+    filter: blur(32px);
+    z-index: 0;
+    pointer-events: none;
+    animation: float-blob 18s infinite alternate ease-in-out;
+}
+
+@keyframes float-blob {
+    0% {
+        transform: translate(-8%, -8%) scale(1);
+    }
+
+    50% {
+        transform: translate(8%, 4%) scale(1.05);
+    }
+
+    100% {
+        transform: translate(-4%, 10%) scale(0.98);
+    }
+}
+
+.social-icon i {
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin: 5px;
+}
+
+.social-icon:hover i {
+    color: #d4af37;
+    transform: scale(1.1);
+}
+
+/* Animação de check ao enviar */
+.submit-success {
+    position: relative;
+    display: inline-block;
+    animation: fadeInOut 2s ease forwards;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #065f46;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    20% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.text-zinc-600:hover {
+    color: #676978;
+}
+
+/* Performance overrides */
+.backdrop-blur-xl,
+.backdrop-blur-md {
+    backdrop-filter: none !important;
+}
+
+.shadow-2xl,
+.shadow-xl {
+    box-shadow: none !important;
+}
+
+[class*="shadow-["] {
+    box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    .bg-blob {
+        animation: none !important;
+        filter: blur(24px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bg-blob {
+        animation: none;
+    }
+
+    .reveal-node {
+        transition: none;
+    }
+}
