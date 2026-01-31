@@ -31,7 +31,7 @@ const handleFormSubmit = (form) => {
 
         const formData = new FormData(form);
 
-        fetch(scriptURL, { method: "POST", body: formData, mode: "no-cors" })
+        fetch(scriptURL, { method: "POST", body: formData })
             .then(() => {
                 form.reset();
 
@@ -46,8 +46,9 @@ const handleFormSubmit = (form) => {
                     success.remove();
                 }, 2000);
             })
-            .catch(() => {
+            .catch((error) => {
                 submitButton.innerText = "Erro! Tente novamente";
+                console.error("Erro ao enviar:", error);
                 setTimeout(() => {
                     submitButton.disabled = false;
                     submitButton.innerText = submitButton.dataset.defaultText;
