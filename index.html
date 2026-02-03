@@ -64,11 +64,10 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 9999;
-            opacity: 0.04;
+            opacity: 0.025;
+            z-index: 50;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        
         /* Scroll Reveal System */
         .reveal-node {
             opacity: 0;
@@ -189,9 +188,12 @@
                 animation: none !important;
                 filter: blur(40px);
             }
-}
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .grain-overlay { display: none !important; }
+        }
     </style>
-    <link rel="stylesheet" href="css/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body class="selection:bg-yellow-400 selection:text-zinc-950">
@@ -205,14 +207,13 @@
             <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
                 <div class="h-12 w-auto overflow-hidden">
                    <img
-  src="img/LogoLudy.webp"
-  alt="Logo oficial Ludymilla Dias Pela Missão"
-  class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
-  referrerpolicy="no-referrer"
-  crossorigin="anonymous"
-  onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w400';"
-  />
-
+                      src="img/LogoLudy.webp"
+                      alt="Logo oficial Ludymilla Dias Pela Missão"
+                      class="h-full w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                      referrerpolicy="no-referrer"
+                      crossorigin="anonymous"
+                      onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w400';"
+                      />
                 </div>
                 <div class="flex flex-col">
                     <span class="text-white font-black text-[10px] tracking-[0.15em] uppercase leading-none">Ludymilla
@@ -245,7 +246,6 @@
         <div class="bg-blob bottom-[10%] right-[5%] opacity-30" style="animation-delay: -5s;"></div>
         <div class="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10">
             <div
-               <div
                     class="reveal-node inline-flex items-center gap-2 bg-[#DB15BB]/10 border border-[#DB15BB]/20 px-4 py-2 rounded-full mb-12"
                 >
                   <span class="w-2 h-2 bg-[#DB15BB] rounded-full animate-pulse"></span>
@@ -262,7 +262,7 @@
                 style="transition-delay: 200ms;">Liberdade, responsabilidade e uma nova geração política.</p>
             <p class="reveal-node text-xs md:text-sm text-zinc-500 font-bold tracking-tight mb-8 opacity-80"
                 style="transition-delay: 300ms;">Porta-voz oficial do MBL • Fundadora de honra do Partido Missão</p>
-            <div <div class="reveal-node flex items-center gap-2 text-[#DB15BB] mb-12" style="transition-delay: 400ms;">
+            <div class="reveal-node flex items-center gap-2 text-[#DB15BB] mb-12" style="transition-delay: 400ms;">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
                         d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -305,12 +305,10 @@
             <!-- Bloco de Imagem com Fundo Amarelo -->
             <div class="w-full max-w-[700px] relative mb-16">
                 <div style="position: relative; background-color: #FACC15; border-radius: 3.5rem; overflow: hidden; padding-top: 125%; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
-                    <img src="img/FotoLudy.webp" alt="Ludymilla Dias"
+                    <img src="img/FotoLudy.webp?v=2" alt="Ludymilla Dias"
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;" loading="lazy">
-
-                            
                         <!-- Badge Flutuante "Pré-Candidata Missão" -->
-                        <div class="absolute bottom-10 right-10 bg-black text-white px-8 py-5 rounded-3xl flex items-center gap-4 shadow-2xl border border-white/10">
+                        <div class="absolute bottom-4 right-4 md:bottom-10 md:right-10 bg-black text-white px-6 py-4 md:px-8 md:py-5 rounded-3xl flex items-center gap-4 shadow-2xl border border-white/10">
                         <img src="img/Missao.webp"
                                 class="w-10 h-10 object-contain" alt="Missão Logo">
                             <div class="flex flex-col">
@@ -321,22 +319,19 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Conteúdo de Texto -->
                 <div class="w-full max-w-4xl reveal-node">
                     <!-- Linha Decorativa e Subtítulo -->
                    <div class="flex items-center gap-4 mb-10">
-  <span class="w-3 h-3 bg-[#DB15BB] rounded-full"></span>
-  <span class="text-[#DB15BB] font-black text-xs uppercase tracking-[0.4em]">
-    Trajetória de Coragem
-  </span>
-  <span class="h-[1px] flex-1 bg-gradient-to-r from-[#DB15BB]/70 via-[#DB15BB]/30 to-transparent"></span>
-</div>
-
-
+                      <span class="w-3 h-3 bg-[#DB15BB] rounded-full"></span>
+                      <span class="text-[#DB15BB] font-black text-xs uppercase tracking-[0.4em]">
+                        Trajetória de Coragem
+                      </span>
+                      <span class="h-[1px] flex-1 bg-gradient-to-r from-[#DB15BB]/70 via-[#DB15BB]/30 to-transparent"></span>
+                    </div>
                     <h2 class="text-5xl md:text-[84px] font-[900] text-zinc-950 leading-[0.85] tracking-tighter mb-12">
                         Uma nova voz para <br>
-<span class="text-[#700EBB] italic">São Paulo no Congresso</span>
+                    <span class="text-[#700EBB] italic">São Paulo no Congresso</span>
                     </h2>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -424,39 +419,59 @@
                     <p class="text-zinc-500 font-medium">Milhares de jovens engajados na luta pela liberdade</p>
                 </div>
                 <div
-  class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">
-  <div
-    class="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-    </svg>
-  </div>
-  <h3 class="text-xl md:text-2xl font-black mb-4">Partido Missão</h3>
-  <p class="text-zinc-500 font-medium">Fundadora de honra do partido que representa o futuro</p>
-</div>
-
+                  class="reveal-node bg-[#141414] p-10 rounded-3xl border border-[#700EBB]/35 ring-1 ring-[#700EBB]/20 shadow-[0_18px_55px_-28px_rgba(112,14,187,0.35)] flex flex-col items-center text-center transition-all duration-500 group hover:border-[#A855F7]/70 hover:ring-[#A855F7]/40 hover:shadow-[0_26px_75px_-30px_rgba(112,14,187,0.55)]">
+                  <div
+                    class="w-16 h-16 rounded-2xl flex items-center justify-center bg-[#700EBB] text-white mb-8 group-hover:scale-110 transition-transform">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl md:text-2xl font-black mb-4">Partido Missão</h3>
+                  <p class="text-zinc-500 font-medium">Fundadora de honra do partido que representa o futuro</p>
+                </div>
             </div>
             <div class="grid grid-cols-2 gap-4 md:gap-6">
                 <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
-                    <img src="img/LudyAmanda.webp"
-                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                        alt="Galeria 1">
+                    <img
+                    class="w-full h-full object-cover object-center"
+                    src="img/LudyAmanda.webp"
+                    srcset="LudyAmanda-320.webp 320w, img/LudyAmanda.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    alt="Ludy e Amanda"
+                    loading="lazy"
+                    />
                 </div>
                 <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
-                    <img src="img/LudyFestival.webp"
-                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                        alt="Galeria 2">
+                    <img
+                    class="w-full h-full object-cover object-center"
+                    src="img/LudyFestival.webp"
+                    srcset="LudyFestival-320.webp 320w, img/LudyFestival.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    alt="Ludy no festival"
+                    loading="lazy"
+                    />
                 </div>
                 <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
-                    <img src="img/LudyPublico.webp"
-                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                        alt="Galeria 3">
+                    <img
+                    class="w-full h-full object-cover object-center"
+
+                    src="img/LudyPublico.webp"
+                    srcset="img/LudyPublico-480.webp 480w, img/LudyPublico.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    alt="Ludy com o público"
+                    loading="lazy"
+                    />
                 </div>
                 <div class="reveal-node overflow-hidden rounded-3xl aspect-square border border-zinc-900">
-                    <img src="img/LudyLeo.webp"
-                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                        alt="Galeria 4">
+                    <img
+                    class="w-full h-full object-cover object-center"
+                    src="img/LudyLeo.webp"
+                    srcset="img/LudyLeo-480.webp 480w, img/LudyLeo.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    alt="Ludy e Leo"
+                    loading="lazy"
+                    />
                 </div>
             </div>
         </div>
@@ -732,8 +747,6 @@
                 <i class="fa-brands fa-tiktok text-3xl transition-colors duration-500 group-hover:text-white"></i>
               </div>
             </a>
-                        </a>
-
             <!-- YOUTUBE (novo) -->
             <a href="https://youtube.com/@aludydias14?si=d_xDEcjyHM2X39TA" target="_blank"
                class="group relative rounded-[2.5rem] p-[2px] overflow-hidden
@@ -772,10 +785,15 @@
 
                 <!-- Imagem destaque (sem botão e sem ícone) -->
                 <div class="relative aspect-video w-full overflow-hidden">
-                    <img src="img/LudyEquipe.webp"
-                        class="w-full h-full object-cover" alt="Ludymilla Destaque">
+                  <img
+                    class="w-full h-full object-cover object-center"
+                    src="img/LudyEquipe.webp"
+                    srcset="img/LudyEquipe-640.webp 640w, img/LudyEquipe.webp 1200w"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    alt="Equipe da Ludy"
+                    loading="lazy"
+                  />
                 </div>
-
                 <!-- Conteúdo -->
                 <div class="p-10 md:p-16">
                     <div class="flex items-center gap-4 mb-10">
@@ -785,10 +803,11 @@
                             class="w-16 h-16 bg-yellow-400 rounded-2xl overflow-hidden flex items-center justify-center">
 
                             <img
-                                src="img/FotoLudy2.webp"
-                                alt="Foto de perfil"
-                                class="w-full h-full object-cover"
-                                loading="lazy"
+                            src="img/FotoLudy.webp"
+                            srcset="img/FotoLudy-640.webp 640w, img/FotoLudy.webp 1200w"
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                            alt="Foto Ludy"
+                            loading="lazy"
                             />
 
                         </div>
@@ -903,20 +922,22 @@
 
     <!-- Footer -->
     <footer class="bg-zinc-950 py-20 px-6 border-t border-zinc-900">
-        <div
-    <footer class="bg-zinc-950 py-16 md:py-20 px-6 border-t border-zinc-900">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-10 md:gap-6">
+        <div class="bg-zinc-950 py-16 md:py-20 px-6 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-10 md:gap-6">
 
       <!-- ESQUERDA (desktop) / TOPO (mobile) -->
       <div class="flex items-center gap-4 justify-center md:justify-self-start">
         <img
-          src="img/LogoLudy.webp"
-          class="h-11 md:h-12"
-          alt="Logo oficial Ludymilla Dias Pela Missão"
-          referrerpolicy="no-referrer"
-          crossorigin="anonymous"
-          onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w300';"
+        class="h-12 md:h-14"
+        src="img/LogoLudy.webp"
+        srcset="img/LogoLudy-200.webp 200w, img/LogoLudy.webp 600w"
+        sizes="(max-width: 768px) 200px, 600px"
+        alt="Logo Ludy"
+        referrerpolicy="no-referrer"
+        crossorigin="anonymous"
+        loading="lazy"
+        onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/17xaO0LVD1bH5UrDeiRfnRu-Hwkxl0skg=w300';"
         />
         <div class="flex flex-col text-left">
           <span class="font-black text-lg md:text-xl leading-none uppercase text-white">Ludymilla</span>
@@ -1105,10 +1126,18 @@ switchForm('volunteer');
 
         // Header scroll
         window.addEventListener('scroll', () => {
-            const h = document.getElementById('main-header');
-            if (window.scrollY > 50) { h.classList.add('py-3', 'bg-[#050505]/95'); h.classList.remove('py-5'); }
-            else { h.classList.add('py-5'); h.classList.remove('py-3', 'bg-[#050505]/95'); }
-        });
+  const h = document.getElementById('main-header');
+  if (!h) return;
+
+  if (window.scrollY > 50) {
+    h.classList.add('py-3', 'bg-[#050505]/95');
+    h.classList.remove('py-5');
+  } else {
+    h.classList.add('py-5');
+    h.classList.remove('py-3', 'bg-[#050505]/95');
+  }
+}, { passive: true });
+
     </script>
 </body>
 
